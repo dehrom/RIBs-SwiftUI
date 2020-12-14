@@ -1,4 +1,4 @@
 # RIBs-SwiftUI
 My implementation of Uber/RIBs with SwiftUI and Combine
 
-Coming soon :)
+work in progress...
