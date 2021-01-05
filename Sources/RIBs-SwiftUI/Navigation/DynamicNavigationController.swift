@@ -54,11 +54,6 @@ struct ProxyModifier: ViewModifier {
 // MARK: - Presenters
 
 struct PushViewPresenter: ViewPresentable {
-    init(next: AnyView, onDismiss: @escaping () -> Void) {
-        self.next = next
-        self.onDismiss = onDismiss
-    }
-    
     func body(content: Content) -> some View {
         content
             .overlay(
@@ -69,16 +64,11 @@ struct PushViewPresenter: ViewPresentable {
             )
     }
     
-    private let next: AnyView
-    private let onDismiss: () -> Void
+    let next: AnyView
+    let onDismiss: () -> Void
 }
 
 struct CoverViewPresenter: ViewPresentable {
-    init(next: AnyView, onDismiss: @escaping () -> Void) {
-        self.next = next
-        self.onDismiss = onDismiss
-    }
-    
     func body(content: Content) -> some View {
         content
             .fullScreenCover(
@@ -87,16 +77,11 @@ struct CoverViewPresenter: ViewPresentable {
             ) { self.next }
     }
     
-    private let next: AnyView
-    private let onDismiss: () -> Void
+    let next: AnyView
+    let onDismiss: () -> Void
 }
 
 struct SheetViewPresenter: ViewPresentable {
-    init(next: AnyView, onDismiss: @escaping () -> Void) {
-        self.next = next
-        self.onDismiss = onDismiss
-    }
-    
     func body(content: Content) -> some View {
         content
             .sheet(
@@ -105,6 +90,6 @@ struct SheetViewPresenter: ViewPresentable {
             ) { self.next }
     }
     
-    private let next: AnyView
-    private let onDismiss: () -> Void
+    let next: AnyView
+    let onDismiss: () -> Void
 }

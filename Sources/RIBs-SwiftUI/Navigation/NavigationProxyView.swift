@@ -18,7 +18,9 @@ public struct NavigationProxyView: View {
     
     public var body: some View {
         if let modifier = controller.modifier {
-            content().modifier(modifier).any
+            content()
+                .modifier(modifier)
+                .any
         } else {
             content()
         }

@@ -15,7 +15,7 @@ public protocol LaunchRouting: ViewableRouting {
 }
 
 /// The application root router base class, that acts as the root of the router tree.
-open class LaunchRouter<InteractorType, ViewType, ViewController>: ViewableRouter<InteractorType, ViewType, ViewController>, LaunchRouting where ViewType: View, ViewController: ViewControllable {
+open class LaunchRouter<InteractorType, ViewController>: ViewableRouter<InteractorType, ViewController>, LaunchRouting where ViewController: ViewControllable {
     /// Launches the router tree.
     public func launch() -> AnyView {
         interactable.activate()
