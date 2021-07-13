@@ -15,19 +15,14 @@
 //
 
 import Foundation
-import SwiftUI
 
-/// The root `Router` of an application.
-public protocol LaunchRouting: Routing {
-    /// Launches the router tree.
-    func launch() -> AnyView
-}
-
-/// The application root router base class, that acts as the root of the router tree.
-open class LaunchRouter<InteractorType, ViewController, Content: View>: ViewableRouter<InteractorType, ViewController, Content>, LaunchRouting where ViewController: ViewControllable {
-    /// Launches the router tree.
-    public func launch() -> AnyView {
-        interactable.activate()
-        return AnyView(view)
+extension Array {
+    /// Remove the given element from this array, by comparing pointer references.
+    ///
+    /// - parameter element: The element to remove.
+    mutating func removeElementByReference(_ element: Element) {
+        let block: (Self.Element) -> Bool = { $0 as AnyObject === element as AnyObject }
+        guard let index = firstIndex(where: block) else { return }
+        remove(at: index)
     }
 }

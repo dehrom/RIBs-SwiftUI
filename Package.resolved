@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Navigator",
+        "repositoryURL": "https://github.com/dehrom/Navigator.git",
+        "state": {
+          "branch": null,
+          "revision": "0664479ad6c99960b2122ec19452f80f31a544c9",
+          "version": "0.2.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
