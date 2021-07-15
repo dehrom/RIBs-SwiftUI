@@ -24,7 +24,7 @@ import SwiftUI
 /// forming a tree of routers that drives the tree of view controllers. Router drives the lifecycle of its owned
 /// interactor. `Router`s should always use helper builders to instantiate children `Router`s.
 open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, Content: View>: Router<InteractorType> {
-    public let view: Content
+    public var view: Content
 
     /// The corresponding `ViewController` owned by this `Router`.
     public let viewController: ViewControllerType
