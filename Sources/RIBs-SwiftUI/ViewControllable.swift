@@ -17,4 +17,4 @@
 import Foundation
 import SwiftUI
 
-public protocol ViewControllable: ObservableObject {}
+public protocol ViewControllable { }
