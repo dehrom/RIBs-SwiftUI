@@ -36,7 +36,7 @@ open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, 
     public init(
         interactor: InteractorType,
         viewController: ViewControllerType,
-        view: Content
+        view: inout Content
     ) {
         self.viewController = viewController
         self.view = view
