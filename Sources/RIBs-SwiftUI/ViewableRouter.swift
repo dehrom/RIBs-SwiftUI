@@ -27,7 +27,7 @@ open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, 
     public var view: Content
 
     /// The corresponding `ViewController` owned by this `Router`.
-    public let viewController: ViewControllerType
+    public let viewControllable: ViewControllerType
 
     /// Initializer.
     ///
@@ -35,10 +35,10 @@ open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, 
     /// - parameter viewController: The corresponding `ViewController` of this `Router`.
     public init(
         interactor: InteractorType,
-        viewController: ViewControllerType,
+        viewControllable: ViewControllerType,
         view: inout Content
     ) {
-        self.viewController = viewController
+        self.viewControllable = viewControllable
         self.view = view
         super.init(interactor: interactor)
     }
