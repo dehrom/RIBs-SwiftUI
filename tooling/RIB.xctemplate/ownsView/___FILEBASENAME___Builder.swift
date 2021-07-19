@@ -27,15 +27,15 @@ extension ___VARIABLE_productName___Builder: ___VARIABLE_productName___Buildable
     func build(withListener listener: ___VARIABLE_productName___Listener) -> ___VARIABLE_productName___Routing {
         let component = ___VARIABLE_productName___Component(dependency: dependency)
         let viewModel = ___VARIABLE_productName___ViewModel()
-        let interactor = ___VARIABLE_productName___Interactor(presenter: viewController)
-        let view = ___VARIABLE_productName___View(viewModel: viewModel)
+        let interactor = ___VARIABLE_productName___Interactor(presenter: viewModel)
+        var view = ___VARIABLE_productName___View(viewModel: viewModel)
         
         interactor.listener = listener
 
         return ___VARIABLE_productName___Router(
             interactor: interactor, 
-            viewController: viewController, 
-            view: view
+            viewControllable: viewModel,
+            view: &view
         )
     }
 }

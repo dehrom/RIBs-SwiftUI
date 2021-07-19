@@ -15,6 +15,6 @@ struct ___VARIABLE_productName___View: View {
 
 struct ___VARIABLE_productName___View_Previews: PreviewProvider {
     static var previews: some View {
-        ___VARIABLE_productName___View(viewController: ___VARIABLE_productName___ViewModel())
+        ___VARIABLE_productName___View(viewModel: ___VARIABLE_productName___ViewModel())
     }
 }
