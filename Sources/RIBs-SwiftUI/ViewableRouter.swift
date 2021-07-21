@@ -18,12 +18,25 @@ import Combine
 import Foundation
 import SwiftUI
 
+public protocol ViewableRouting: Routing {
+    var erasedView: AnyView { get }
+}
+
 /// The base class of all routers that owns view controllers, representing application states.
 ///
 /// A `Router` acts on inputs from its corresponding interactor, to manipulate application state and view state,
 /// forming a tree of routers that drives the tree of view controllers. Router drives the lifecycle of its owned
 /// interactor. `Router`s should always use helper builders to instantiate children `Router`s.
-open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, Content: View>: Router<InteractorType> {
+open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, Content: View>: Router<InteractorType>, ViewableRouting {
+
+    public var erasedView: AnyView { AnyView(view) }
+
+    public var childrenViews: [AnyView] {
+        children
+            .compactMap { $0 as? ViewableRouting }
+            .map(\.erasedView)
+    }
+
     public let view: Content
 
     /// The corresponding `ViewController` owned by this `Router`.
