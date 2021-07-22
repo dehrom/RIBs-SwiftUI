@@ -81,14 +81,14 @@ public extension Workflow {
     ///
     /// - parameter actionableItem: The initial actionable item for the first step.
     /// - returns: The cancellable of this workflow.
-    final func subscribe(_ actionableItem: ActionableItemType) -> Cancellable {
+    final func subscribe(_ actionableItem: ActionableItemType) -> AnyCancellable {
         guard compositeCancellable.count > 0 else {
             assertionFailure("Attempt to subscribe to \(self) before it is comitted.")
-            return CompositeCancellable()
+            return AnyCancellable(CompositeCancellable())
         }
 
         subject.send((actionableItem, ()))
-        return compositeCancellable
+        return AnyCancellable(compositeCancellable)
     }
 }
 
