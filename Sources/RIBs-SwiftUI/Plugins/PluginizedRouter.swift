@@ -33,16 +33,22 @@ open class PluginizedRouter<Context, Component: Dependency, InteractorType, View
         super.init(interactor: interactor, viewController: viewController, view: view)
     }
 
-    public func applyPlugins(with context: Context) {
-        let publisher = Publishers.from(collection: plugins)
-
-        applyCancellation = publisher
+    public func applyPlugins(
+        with context: Context,
+        _ callback: @escaping ([(id: UUID, view: AnyView)]) -> ()
+    ) {
+        applyCancellation = Publishers.from(collection: plugins)
             .flatMap { [unowned self] in
                 buildFrom($0, with: context)
             }
             .collect()
             .sink { [unowned self] routers in
                 routers.forEach(attachChild)
+                
+                let views = routers
+                    .compactMap { $0 as? ViewableRouting }
+                    .map { ($0.id, $0.erasedView) }
+                callback(views)
             }
     }
 
