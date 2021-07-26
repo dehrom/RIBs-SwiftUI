@@ -18,7 +18,7 @@ final class ___VARIABLE_productName___Router<ViewControllable: ___VARIABLE_produ
         viewControllable: ViewControllable,
         viewClosure: @escaping () -> ___VARIABLE_productName___View
     ) {
-        super.init(interactor: interactor, viewControllable: viewControllable, viewClosure: &viewClosure)
+        super.init(interactor: interactor, viewControllable: viewControllable, viewClosure: viewClosure)
         interactor.router = self
     }
 }
