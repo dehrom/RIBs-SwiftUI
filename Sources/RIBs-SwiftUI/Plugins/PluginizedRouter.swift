@@ -26,11 +26,11 @@ open class PluginizedRouter<Context, Component: Dependency, InteractorType, View
         interactor: InteractorType,
         component: Component,
         viewController: ViewControllerType,
-        view: inout Content
+        viewClosure: @escaping () -> Content
     ) {
         self.component = component
         plugins = []
-        super.init(interactor: interactor, viewControllable: viewController, view: &view)
+        super.init(interactor: interactor, viewControllable: viewController, viewClosure: viewClosure)
     }
 
     public func applyPlugins(

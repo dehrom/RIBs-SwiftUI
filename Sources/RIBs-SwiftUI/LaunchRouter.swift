@@ -28,6 +28,6 @@ open class LaunchRouter<InteractorType, ViewController, Content: View>: Viewable
     /// Launches the router tree.
     public func launch() -> AnyView {
         interactable.activate()
-        return AnyView(view)
+        return AnyView(viewClosure())
     }
 }
