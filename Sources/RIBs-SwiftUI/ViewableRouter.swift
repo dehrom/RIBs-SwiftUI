@@ -27,8 +27,8 @@ public protocol ViewableRouting: Routing {
 /// A `Router` acts on inputs from its corresponding interactor, to manipulate application state and view state,
 /// forming a tree of routers that drives the tree of view controllers. Router drives the lifecycle of its owned
 /// interactor. `Router`s should always use helper builders to instantiate children `Router`s.
-open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, Content: View>: Router<InteractorType>, ViewableRouting {
 
+open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, Content: View>: Router<InteractorType>, ViewableRouting {
     public var erasedView: AnyView { AnyView(view) }
 
     public var childrenViews: [AnyView] {
@@ -36,11 +36,11 @@ open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, 
             .compactMap { $0 as? ViewableRouting }
             .map(\.erasedView)
     }
-
-    public let view: Content
+    
+    public var view: Content
 
     /// The corresponding `ViewController` owned by this `Router`.
-    public let viewController: ViewControllerType
+    public let viewControllable: ViewControllerType
 
     /// Initializer.
     ///
@@ -48,10 +48,10 @@ open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, 
     /// - parameter viewController: The corresponding `ViewController` of this `Router`.
     public init(
         interactor: InteractorType,
-        viewController: ViewControllerType,
-        view: Content
+        viewControllable: ViewControllerType,
+        view: inout Content
     ) {
-        self.viewController = viewController
+        self.viewControllable = viewControllable
         self.view = view
         super.init(interactor: interactor)
     }
