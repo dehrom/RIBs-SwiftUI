@@ -26,7 +26,7 @@ open class PluginizedRouter<Context, Component: Dependency, InteractorType, View
         interactor: InteractorType,
         component: Component,
         viewController: ViewControllerType,
-        view: Content
+        view: inout Content
     ) {
         self.component = component
         plugins = []
