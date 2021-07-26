@@ -14,7 +14,7 @@ final class ___VARIABLE_productName___Component: Component<___VARIABLE_productNa
 // MARK: - Builder
 
 protocol ___VARIABLE_productName___Buildable: Buildable {
-    func build(withListener listener: ___VARIABLE_productName___Listener) -> ___VARIABLE_productName___Routing
+    func build(withListener listener: ___VARIABLE_productName___Listener) -> (___VARIABLE_productName___Routing, () -> ___VARIABLE_productName___View)
 }
 
 final class ___VARIABLE_productName___Builder: Builder<___VARIABLE_productName___Dependency> {
@@ -24,18 +24,19 @@ final class ___VARIABLE_productName___Builder: Builder<___VARIABLE_productName__
 }
 
 extension ___VARIABLE_productName___Builder: ___VARIABLE_productName___Buildable {
-    func build(withListener listener: ___VARIABLE_productName___Listener) -> ___VARIABLE_productName___Routing {
+    func build(withListener listener: ___VARIABLE_productName___Listener) -> (___VARIABLE_productName___Routing, () -> ___VARIABLE_productName___View) {
         let component = ___VARIABLE_productName___Component(dependency: dependency)
         let viewModel = ___VARIABLE_productName___ViewModel()
         let interactor = ___VARIABLE_productName___Interactor(presenter: viewModel)
         
         interactor.listener = listener
 
-        return ___VARIABLE_productName___Router(
+        let router = ___VARIABLE_productName___Router(
             interactor: interactor, 
             viewControllable: viewModel) {
             ___VARIABLE_productName___View(viewModel: viewModel)
         }
+        return (router, router.viewClosure)
     }
 }
 
