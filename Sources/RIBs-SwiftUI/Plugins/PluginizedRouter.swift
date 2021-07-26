@@ -30,7 +30,7 @@ open class PluginizedRouter<Context, Component: Dependency, InteractorType, View
     ) {
         self.component = component
         plugins = []
-        super.init(interactor: interactor, viewController: viewController, view: view)
+        super.init(interactor: interactor, viewControllable: viewController, view: view)
     }
 
     public func applyPlugins(
