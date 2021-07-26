@@ -6,7 +6,6 @@ import RIBs_SwiftUI
 
 protocol ___VARIABLE_productName___Routing: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
-    var view: ___VARIABLE_productName___View { get }
 }
 
 protocol ___VARIABLE_productName___Presentable: Presentable {

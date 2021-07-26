@@ -16,9 +16,9 @@ final class ___VARIABLE_productName___Router<ViewControllable: ___VARIABLE_produ
     override init(
         interactor: ___VARIABLE_productName___Interactable, 
         viewControllable: ViewControllable,
-        view: inout ___VARIABLE_productName___View
+        viewClosure: @escaping () -> ___VARIABLE_productName___View
     ) {
-        super.init(interactor: interactor, viewControllable: viewControllable, view: &view)
+        super.init(interactor: interactor, viewControllable: viewControllable, viewClosure: &viewClosure)
         interactor.router = self
     }
 }

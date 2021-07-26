@@ -28,15 +28,14 @@ extension ___VARIABLE_productName___Builder: ___VARIABLE_productName___Buildable
         let component = ___VARIABLE_productName___Component(dependency: dependency)
         let viewModel = ___VARIABLE_productName___ViewModel()
         let interactor = ___VARIABLE_productName___Interactor(presenter: viewModel)
-        var view = ___VARIABLE_productName___View(viewModel: viewModel)
         
         interactor.listener = listener
 
         return ___VARIABLE_productName___Router(
             interactor: interactor, 
-            viewControllable: viewModel,
-            view: &view
-        )
+            viewControllable: viewModel) {
+            ___VARIABLE_productName___View(viewModel: viewModel)
+        }
     }
 }
 
