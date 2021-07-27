@@ -73,6 +73,16 @@ open class PluginizedRouter<Context, Component: Dependency, InteractorType, View
                 }
             }
     }
+    
+    public func isApplicableForAnyPlugin(_ context: Context) -> AnyPublisher<Bool, Never> {
+        Publishers.from(collection: plugins)
+            .flatMap {
+                $0.isApplicable(with: context)
+            }
+            .first(where: { $0 })
+            .replaceEmpty(with: false)
+            .eraseToAnyPublisher()
+    }
 
     public func addPlugin<P: Plugin>(_ plugin: P) where
         P.Component == Component,
