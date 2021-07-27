@@ -168,6 +168,7 @@ public extension AnyCancellable {
             return self
         }
         interactor.compositeCancellable.insert(self)
+
         return self
     }
 }
