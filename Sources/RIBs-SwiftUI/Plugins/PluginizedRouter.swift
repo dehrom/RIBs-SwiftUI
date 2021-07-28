@@ -25,12 +25,12 @@ open class PluginizedRouter<Context, Component: Dependency, InteractorType, View
     public init(
         interactor: InteractorType,
         component: Component,
-        viewController: ViewControllerType,
+        viewControllable: ViewControllerType,
         view: LazyView<Content>
     ) {
         self.component = component
         plugins = []
-        super.init(interactor: interactor, viewController: viewController, view: view)
+        super.init(interactor: interactor, viewControllable: viewControllable, view: view)
     }
 
     public func applyPlugins(
@@ -44,7 +44,7 @@ open class PluginizedRouter<Context, Component: Dependency, InteractorType, View
             .collect()
             .sink { [unowned self] routers in
                 routers.forEach(attachChild)
-                
+
                 let views = routers
                     .compactMap { $0 as? ViewableRouting }
                     .map { ($0.id, $0.erasedView) }
@@ -73,7 +73,7 @@ open class PluginizedRouter<Context, Component: Dependency, InteractorType, View
                 }
             }
     }
-    
+
     public func isApplicableForAnyPlugin(_ context: Context) -> AnyPublisher<Bool, Never> {
         Publishers.from(collection: plugins)
             .flatMap {

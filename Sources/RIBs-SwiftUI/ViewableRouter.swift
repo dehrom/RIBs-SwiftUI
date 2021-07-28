@@ -38,20 +38,19 @@ open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, 
             .map(\.erasedView)
     }
 
-
     /// The corresponding `ViewController` owned by this `Router`.
-    public let viewController: ViewControllerType
+    public let viewControllable: ViewControllerType
 
     /// Initializer.
     ///
     /// - parameter interactor: The corresponding `Interactor` of this `Router`.
-    /// - parameter viewController: The corresponding `ViewController` of this `Router`.
+    /// - parameter viewControllable: The corresponding `ViewController` of this `Router`.
     public init(
         interactor: InteractorType,
-        viewController: ViewControllerType,
+        viewControllable: ViewControllerType,
         view: LazyView<Content>
     ) {
-        self.viewController = viewController
+        self.viewControllable = viewControllable
         self.view = view
         self.erasedView = AnyView(view)
         super.init(interactor: interactor)
