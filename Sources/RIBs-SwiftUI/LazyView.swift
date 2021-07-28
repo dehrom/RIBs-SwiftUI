@@ -14,20 +14,17 @@
 //  limitations under the License.
 //
 
-import Foundation
 import SwiftUI
 
-/// The root `Router` of an application.
-public protocol LaunchRouting: Routing {
-    /// Launches the router tree.
-    func launch() -> AnyView
-}
-
-/// The application root router base class, that acts as the root of the router tree.
-open class LaunchRouter<InteractorType, ViewController, Content: View>: ViewableRouter<InteractorType, ViewController, Content>, LaunchRouting where ViewController: ViewControllable {
-    /// Launches the router tree.
-    public func launch() -> AnyView {
-        interactable.activate()
-        return erasedView
+/// Allows to lazy initialize external  view.
+public struct LazyView<Content: View>: View {
+    public init(_ content: @autoclosure @escaping () -> Content) {
+        self.content = content
     }
+
+    public var body: some View {
+        content()
+    }
+
+    private let content: () -> Content
 }

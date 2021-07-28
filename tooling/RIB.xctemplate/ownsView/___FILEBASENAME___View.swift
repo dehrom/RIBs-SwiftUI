@@ -3,10 +3,14 @@
 import SwiftUI
 import Navigator
 
-struct ___VARIABLE_productName___View: View {
-    @ObservedObject var viewController: ___VARIABLE_productName___ViewController
+public struct ___VARIABLE_productName___View: View {
+    @ObservedObject var viewModel: ___VARIABLE_productName___ViewModel
+    
+    init(viewModel: ___VARIABLE_productName___ViewModel) {
+        self.viewModel = viewModel
+    }
 
-    var body: some View {
+    public var body: some View {
         Text("Hello, I am ___VARIABLE_productName___ view")
     }
 
@@ -15,6 +19,6 @@ struct ___VARIABLE_productName___View: View {
 
 struct ___VARIABLE_productName___View_Previews: PreviewProvider {
     static var previews: some View {
-        ___VARIABLE_productName___View(viewController: ___VARIABLE_productName___ViewController())
+        ___VARIABLE_productName___View(viewModel: ___VARIABLE_productName___ViewModel())
     }
 }
