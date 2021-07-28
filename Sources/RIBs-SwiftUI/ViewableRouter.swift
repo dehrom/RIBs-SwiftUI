@@ -32,12 +32,6 @@ open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, 
     public let erasedView: AnyView
     public let view: LazyView<Content>
 
-    public var childrenViews: [AnyView] {
-        children
-            .compactMap { $0 as? ViewableRouting }
-            .map(\.erasedView)
-    }
-
     /// The corresponding `ViewController` owned by this `Router`.
     public let viewControllable: ViewControllerType
 
