@@ -6,12 +6,12 @@ import PackageDescription
 let package = Package(
     name: "RIBs-SwiftUI",
     platforms: [
-        .iOS(.v13),
-        .watchOS(.v7)
+        .iOS(.v14),
     ],
     products: [
         .library(
             name: "RIBs-SwiftUI",
+            type: .dynamic,
             targets: ["RIBs-SwiftUI"]),
     ],
     dependencies: [
