@@ -28,7 +28,7 @@ extension  ___VARIABLE_productName___Builder: ___VARIABLE_productName___Buildabl
         let component = ___VARIABLE_productName___Component(dependency: dependency)
         let viewController = ___VARIABLE_productName___ViewController()
         let interactor = ___VARIABLE_productName___Interactor(presenter: viewController)
-        let view = ___VARIABLE_productName___View(viewController: viewController)
+        let view = LazyView(___VARIABLE_productName___View(viewController: viewController))
         
         interactor.listener = listener
 

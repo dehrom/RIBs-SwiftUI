@@ -16,7 +16,7 @@ final class ___VARIABLE_productName___Router<ViewControllable: ___VARIABLE_produ
     override init(
         interactor: ___VARIABLE_productName___Interactable, 
         viewController: ViewControllable,
-        view: ___VARIABLE_productName___View
+        view: LazyView<___VARIABLE_productName___View>
     ) {
         super.init(interactor: interactor, viewController: viewController, view: view)
         interactor.router = self

@@ -29,7 +29,8 @@ public protocol ViewableRouting: Routing {
 /// interactor. `Router`s should always use helper builders to instantiate children `Router`s.
 open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, Content: View>: Router<InteractorType>, ViewableRouting {
 
-    public var erasedView: AnyView { AnyView(view) }
+    public let erasedView: AnyView
+    public let view: LazyView<Content>
 
     public var childrenViews: [AnyView] {
         children
@@ -37,7 +38,6 @@ open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, 
             .map(\.erasedView)
     }
 
-    public let view: Content
 
     /// The corresponding `ViewController` owned by this `Router`.
     public let viewController: ViewControllerType
@@ -49,10 +49,11 @@ open class ViewableRouter<InteractorType, ViewControllerType: ViewControllable, 
     public init(
         interactor: InteractorType,
         viewController: ViewControllerType,
-        view: Content
+        view: LazyView<Content>
     ) {
         self.viewController = viewController
         self.view = view
+        self.erasedView = AnyView(view)
         super.init(interactor: interactor)
     }
 }
