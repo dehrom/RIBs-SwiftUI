@@ -17,7 +17,7 @@ public protocol ___VARIABLE_productName___Buildable: Buildable {
     func build(withListener listener: ___VARIABLE_productName___Listener) -> ___VARIABLE_productName___Routing
 }
 
-final class ___VARIABLE_productName___Builder: Builder<___VARIABLE_productName___Dependency> {
+public final class ___VARIABLE_productName___Builder: Builder<___VARIABLE_productName___Dependency> {
     public override init(dependency: ___VARIABLE_productName___Dependency) {
         super.init(dependency: dependency)
     }
